@@ -2,6 +2,20 @@
 {% block content %}
 
 <div class='container'>
+
+    <h1>My Projects </h1>
+    <hr>
+    
+    <div class='row'>
+
+    {% for project in project_list %}
+        <div class='col s12 13'>
+            <div class='card-panel'>
+            <h5>{{ project.name }}</h5>
+            <a href="{% url 'detail' project.slug %}" class='btn'>Visit</a>
+            </div>
+        </div>
+    {% empty %}
     <div class='noproject-wrapper center'>
         <h3 clas='grey-text'>No projects Yet</h3>
         <a href='' class='btn-large grey'>
@@ -9,6 +23,12 @@
             <span class='bold'>Add Project</span>
         </a>
     </div>
+
+    {% endfor %}
+    </div>
+
+    
+    
 </div>
 
 

@@ -11,6 +11,7 @@ class Project(models.Model):
         self.slug = slugify(self.name)
         super(Project, self).save(*args, **kwargs)
 
+    @property
     def budget_left(self):
         expense_list = Expense.objects.filter(project=self)
         total_expense_amount = 0
@@ -19,6 +20,7 @@ class Project(models.Model):
 
         return self.budget - total_expense_amount
 
+    @property
     def total_transactions(self):
         expense_list = Expense.objects.filter(project=self)
         return len(expense_list)
@@ -33,3 +35,6 @@ class Expense(models.Model):
     title = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('-amount',)
