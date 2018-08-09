@@ -1,24 +1,24 @@
 {% extends 'budget/base.html' %}
 {% load static %}
-
 {% block content %}
 
-<div class='container'>
-    <form action='' method='POST'>
-        {% csrf_token %}
-        {{ form }}
-        <label for='categoryInput'> Expense Category 
-        (hit enter after every category)</label>
-        <input type='text' name='categoryInput' id='categoryInput'>
-        <input type='hidden' name='categoriesString'>
+<div class="container">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <label for="categoryInput">Expense Categores (hit enter after every category)</label>
+    <input type="text" name="categoryInput" id="categoryInput">
+    <input type="hidden" name="categoriesString">
 
-        <ul id='categoriesContainer'>
-            
-        </ul>
+    <ul id="categoriesContainer">
 
-        <button type='submit' class='btn'>Start Project</button>
-    </form>
+    </ul>
+
+    <button type="submit" class="btn">Start Project</button>
+
+  </form>
 </div>
 
-<script scr='{% static 'js/script.js' %}'></script>
+<script src="{% static 'js/script.js' %}"></script>
+
 {% endblock %}
